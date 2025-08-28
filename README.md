@@ -31,6 +31,26 @@ The examples use the Syncfusion .NET MAUI PDF Viewer, which require a valid lice
    ```
 
 2. Install required Syncfusion NuGet packages (automatically restored when building the project)
+   - SampleBrowser.Maui.Base
+	- Syncfusion.Compression.NET
+	- Syncfusion.Maui.Core
+	- Syncfusion.Maui.SignaturePad
+	- Syncfusion.Maui.PdfToImageConverter
+	- Syncfusion.Maui.Sliders
+	- Syncfusion.Maui.Toolbar
+	- Syncfusion.Pdf.NET
+	- Syncfusion.Maui.PdfViewer
+	- Syncfusion.Maui.TabView
+	- Syncfusion.Maui.ListView
+	- Syncfusion.Maui.DataSource
+	- Syncfusion.Maui.GridCommon
+	- Syncfusion.Pdf.Imaging.NET
+	- Syncfusion.Maui.Buttons
+	- Syncfusion.Maui.Popup
+	- System.Private.Uri
+   - Azure.AI.OpenAI
+	- Azure.Identity
+	- Microsoft.Extensions.AI.OpenAI
 
 If you download the examples using the "Download ZIP" option, please follow the instructions below.
 
