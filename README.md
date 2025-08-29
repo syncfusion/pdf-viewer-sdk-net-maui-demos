@@ -54,7 +54,7 @@ The examples use the Syncfusion .NET MAUI PDF Viewer, which require a valid lice
 
 **Notes:**
 
-* If you download the examples using the 'Download ZIP' option, right-click the archive, select **Properties**, and then select **Unblock** before unzipping.
+* If you downloaded the examples using the 'Download ZIP' option, right-click the archive, select **Properties**, and then select **Unblock** before unzipping.
 
 
 ## <a name="support-and-feedback"></a>Support and Feedback ##
