@@ -11,7 +11,6 @@ using Syncfusion.Maui.Core.Converters;
 using Syncfusion.Maui.Core.Internals;
 using Syncfusion.Maui.PdfViewer;
 using System.Reflection;
-using View = Microsoft.Maui.Controls.View;
 
 namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer;
 [XamlCompilation(XamlCompilationOptions.Compile)]

@@ -10,15 +10,12 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Platform;
 using SampleBrowser.Maui.Base;
-using Syncfusion.Maui.Core.Converters;
 using Syncfusion.Maui.Core.Internals;
 using Syncfusion.Maui.PdfViewer;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Parsing;
 using System.IO;
 using System.Reflection;
-using Colors = Microsoft.Maui.Graphics.Colors;
-using View = Microsoft.Maui.Controls.View;
 
 namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer;
 [XamlCompilation(XamlCompilationOptions.Compile)]
