@@ -6,6 +6,7 @@
              xmlns:core="clr-namespace:Syncfusion.Maui.Core.Converters;assembly=Syncfusion.Maui.Core"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"  
             xmlns:listType="clr-namespace:SampleBrowser.Maui.PdfViewer.Samples.PdfViewer.ShowAndHideFormField.View"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:Class="SampleBrowser.Maui.PdfViewer.SfPdfViewer.ShowAndHideFormField">
 
     <localCore:SampleView.Resources>
@@ -114,19 +115,19 @@
          
          DocumentSource="{Binding DocumentStream}"
          DocumentLoaded="PdfViewer_DocumentLoaded" Tapped="PdfViewer_Tapped" FormFieldFocusChanged="FormField_FocusedChange" />
-                        
-                        <ListView x:Name="myListView"  IsVisible="{Binding IsListVisible}"
+
+                        <listView:SfListView x:Name="myListView"  IsVisible="{Binding IsListVisible}"
           ItemsSource="{Binding ListItems}" 
           SelectedItem="{Binding SelectedItem}" 
           WidthRequest="197" 
                                   Background="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#F3EDF7}"
           BackgroundColor="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#F3EDF7}"
           HeightRequest="100"                      
-          VerticalOptions="Start" SeparatorVisibility="None"
+          VerticalOptions="Start"
           HorizontalOptions="Start">
-                            <ListView.ItemTemplate>
+                            <listView:SfListView.ItemTemplate>
                                 <DataTemplate x:DataType="listType:ListItem" >
-                                    <ViewCell >
+                                    <Grid >
                                         <Grid Padding="10" Background="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#F3EDF7}" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -146,10 +147,10 @@
                                             <Label Grid.RowSpan="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="&#xe71b;" FontFamily="MauiMaterialAssets" FontSize="14"/>
                                             <Button Grid.RowSpan="2" Grid.Column="2" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource IconColourLight}, Dark={StaticResource IconColour},Default=#99000000}" FontFamily="MauiMaterialAssets" BorderColor="Transparent" BackgroundColor="Transparent" BorderWidth="0" IsVisible="True"/>
                                         </Grid>
-                                    </ViewCell>
+                                    </Grid>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                </<listView:SfListView.ItemTemplate>
+                                </listView:SfListView>
                     </Grid>
                 </Grid>
             </Grid>

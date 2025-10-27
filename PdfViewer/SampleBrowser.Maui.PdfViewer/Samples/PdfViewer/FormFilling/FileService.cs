@@ -63,6 +63,7 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
 #else
                             Application.Current?.Windows[0].Page?.DisplayAlert("Error", $"Pick a file of type {fileExtension}", "OK");
 #endif
+                        }
                     }
                 }
                 return null;

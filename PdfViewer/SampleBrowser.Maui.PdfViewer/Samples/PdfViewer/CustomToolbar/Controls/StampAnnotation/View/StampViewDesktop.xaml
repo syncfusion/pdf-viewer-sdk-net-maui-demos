@@ -61,7 +61,7 @@
                                 </Grid>
                             </DataTemplate>
                             </listView:SfListView.ItemTemplate>
-                            </ListView>
+                            </listView:SfListView>
                 </Border>
                 <Grid Margin="0,5,0,0" x:Name="CustomStampMenu" IsVisible="false" 
                         HorizontalOptions="Start" VerticalOptions="Start" MaximumHeightRequest="500" WidthRequest="200">
