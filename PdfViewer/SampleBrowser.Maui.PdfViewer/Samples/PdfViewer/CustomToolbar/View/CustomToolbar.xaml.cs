@@ -5,8 +5,6 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-using Android.Views;
-using Android.Widget;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
@@ -19,7 +17,8 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Parsing;
 using System.IO;
 using System.Reflection;
-using static Android.Provider.CalendarContract;
+using Colors = Microsoft.Maui.Graphics.Colors;
+using View = Microsoft.Maui.Controls.View;
 
 namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer;
 [XamlCompilation(XamlCompilationOptions.Compile)]

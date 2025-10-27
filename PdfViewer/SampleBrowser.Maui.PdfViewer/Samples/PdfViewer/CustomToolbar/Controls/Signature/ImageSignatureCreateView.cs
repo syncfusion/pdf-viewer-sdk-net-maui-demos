@@ -218,21 +218,18 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
 
         SignatureItem ISignatureCreateView.GetSignatureItem()
         {
-#if NET10_0_OR_GREATER
-            if (imageStream != null)
+            Image image = new Image()
             {
-                MemoryStream viewerStream = new MemoryStream();
-                imageStream.Position = 0;
-                imageStream.CopyTo(viewerStream);
-                viewerStream.Position = 0;
-                image.Source = ImageSource.FromStream(() => viewerStream);
-            }
-#else
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                Source = new FileImageSource { File = imageFilePath }
+            };
+
         if (!string.IsNullOrEmpty(imageFilePath))
                 image.Source = new FileImageSource { File = imageFilePath };
         else if (imageStream != null)
                 image.Source = ImageSource.FromStream(() => { return imageStream; });
-#endif
+
             ImageSignatureItem signatureItem = new ImageSignatureItem(imageStream, imageFilePath, image);
             return signatureItem;
         }

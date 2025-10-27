@@ -5,13 +5,13 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-using Android.Views;
 using Microsoft.Maui.Platform;
 using SampleBrowser.Maui.Base;
 using Syncfusion.Maui.Core.Converters;
 using Syncfusion.Maui.Core.Internals;
 using Syncfusion.Maui.PdfViewer;
 using System.Reflection;
+using View = Microsoft.Maui.Controls.View;
 
 namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer;
 [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -633,7 +633,7 @@ public partial class Annotations : SampleView
     {
 #if ANDROID || IOS
         if (lastCell != null)
-            lastCell.View.BackgroundColor = Colors.Transparent;
+            lastCell.BackgroundColor = Colors.Transparent;
         if (sender is View tappedView)
         {
             tappedView.BackgroundColor = Color.FromArgb("#0A000000");

@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:SampleBrowser.Maui.PdfViewer.SfPdfViewer"                      
              xmlns:core="clr-namespace:Syncfusion.Maui.Core.Converters;assembly=Syncfusion.Maui.Core"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"  
-            xmlns:listType="clr-namespace:SampleBrowser.Maui.PdfViewer.Samples.PdfViewer.ShowAndHideFormField.View"
+             xmlns:listType="clr-namespace:SampleBrowser.Maui.PdfViewer.Samples.PdfViewer.ShowAndHideFormField.View"
              xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:Class="SampleBrowser.Maui.PdfViewer.SfPdfViewer.ShowAndHideFormField">
 
@@ -149,7 +149,7 @@
                                         </Grid>
                                     </Grid>
                                 </DataTemplate>
-                                </<listView:SfListView.ItemTemplate>
+                                </listView:SfListView.ItemTemplate>
                                 </listView:SfListView>
                     </Grid>
                 </Grid>
