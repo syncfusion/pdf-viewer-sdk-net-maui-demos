@@ -2,6 +2,7 @@
 <local:StampView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:DataType="local:StampsData"
              xmlns:local="clr-namespace:SampleBrowser.Maui.PdfViewer.SfPdfViewer"
+              xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              x:Class="SampleBrowser.Maui.PdfViewer.SfPdfViewer.StampViewDesktop"
              PropertyChanged="StampMenu_PropertyChanged">
 
@@ -23,14 +24,14 @@
                         BackgroundColor="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#EEE8F4}"
                         PropertyChanged="StandardStampMenu_PropertyChanged"
                         Stroke="#33000000" HeightRequest="500" WidthRequest="280" VerticalOptions="End">
-                    <ListView RowHeight="44" BackgroundColor="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#EEE8F4}" Margin="0,8"
+                    <listView:SfListView ItemSize="44" BackgroundColor="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#EEE8F4}" Margin="0,8"
                           ItemsSource="{Binding StandardStampItems}"
                           x:Name="StandardStampMenuItems"
                           ItemTapped="Stamp_ItemTapped"
                           SelectionMode="None">
-                        <ListView.ItemTemplate>
+                        <listView:SfListView.ItemTemplate>
                             <DataTemplate x:DataType="local:StandardStamps">
-                                <ViewCell>
+                                <Grid>
                                     <StackLayout HorizontalOptions="Start" WidthRequest="280" Padding="0,5,0,7">
                                         <Border Margin="7,0,19,0" HorizontalOptions="Start" Stroke="{Binding BorderColor}" HeightRequest="{Binding BorderHeight}" WidthRequest="{Binding BorderWidth}"
                                             Background="{Binding BorderBackground}" StrokeThickness="2" 
@@ -57,10 +58,10 @@
                                             </VisualStateGroupList>
                                         </VisualStateManager.VisualStateGroups>
                                     </StackLayout>
-                                </ViewCell>
+                                </Grid>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                            </listView:SfListView.ItemTemplate>
+                            </ListView>
                 </Border>
                 <Grid Margin="0,5,0,0" x:Name="CustomStampMenu" IsVisible="false" 
                         HorizontalOptions="Start" VerticalOptions="Start" MaximumHeightRequest="500" WidthRequest="200">

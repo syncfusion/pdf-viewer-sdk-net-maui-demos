@@ -4172,12 +4172,20 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                 if (FileData != null && FileData.FileName != null)
                 {
                     string? filePath = await FileService.SaveAsAsync(FileData.FileName, outStream);
+#if NET10_0_OR_GREATER
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync("File saved", $"The file is saved to {filePath}", "OK");
+#else
                     await Application.Current!.Windows[0].Page!.DisplayAlert("File saved", $"The file is saved to {filePath}", "OK");
+#endif
                 }
             }
             catch (Exception exception)
             {
+#if NET10_0_OR_GREATER
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not saved. {exception.Message}", "OK");
+#else
                 await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not saved. {exception.Message}", "OK");
+#endif
             }
         }
 
@@ -4204,7 +4212,11 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                     }
                     catch (Exception exception)
                     {
+#if NET10_0_OR_GREATER
+                        await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not imported. {exception.Message}", "OK");
+#else
                         await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not imported. {exception.Message}", "OK");
+#endif
                     }
                 }
             }

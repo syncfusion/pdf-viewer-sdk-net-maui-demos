@@ -45,14 +45,20 @@ public class SignatureFileService
                 {
                     if (result.FileName != null)
                     {
-                        if (result.FileName.EndsWith($".{fileExtension}", StringComparison.OrdinalIgnoreCase))
-                        {
-                            return new PdfFileData(result.FileName, await result.OpenReadAsync());
-                        }
-                        else
+                    if (result.FileName.EndsWith($".{fileExtension}", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return new PdfFileData(result.FileName, await result.OpenReadAsync());
+                    }
+                    else
+                    {
+#if NET10_0_OR_GREATER
+                        Application.Current?.Windows[0].Page?.DisplayAlertAsync("Error", $"Pick a file of type {fileExtension}", "OK");
+#else
                         Application.Current?.Windows[0].Page?.DisplayAlert("Error", $"Pick a file of type {fileExtension}", "OK");
+#endif
                     }
                 }
+            }
                 return null;
             }
             catch (Exception ex)

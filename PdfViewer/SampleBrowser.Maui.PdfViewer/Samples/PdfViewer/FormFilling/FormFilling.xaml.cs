@@ -30,12 +30,21 @@ public partial class FormFilling : SampleView
             if (viewModel.FileData != null)
             {
                 string? filePath = await FileService.SaveAsAsync(viewModel.FileData.FileName, outStream);
+#if NET10_0_OR_GREATER
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync("File saved", $"The file is saved to {filePath}", "OK");
+#else
                 await Application.Current!.Windows[0].Page!.DisplayAlert("File saved", $"The file is saved to {filePath}", "OK");
+#endif
+
             }
         }
         catch (Exception exception)
         {
+#if NET10_0_OR_GREATER
+            await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not saved. {exception.Message}", "OK");
+#else
             await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not saved. {exception.Message}", "OK");
+#endif
         }
     }
 
@@ -53,7 +62,11 @@ public partial class FormFilling : SampleView
             }
             catch (Exception exception)
             {
+#if NET10_0_OR_GREATER
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not imported. {exception.Message}", "OK");
+#else
                 await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not imported. {exception.Message}", "OK");
+#endif
             }
         }
     }
