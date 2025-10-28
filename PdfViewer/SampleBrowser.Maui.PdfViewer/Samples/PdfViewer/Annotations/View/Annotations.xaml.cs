@@ -23,7 +23,7 @@ public partial class Annotations : SampleView
     /// </summary>
     bool undoAlreadyExecuted = false;
 #if ANDROID || IOS
-    private ViewCell? lastCell;
+    private View? lastCell;
 #endif
     public Stream CustomStampImageStream { get; set; } = new MemoryStream();
     public double CustomStampWidth { get; set; }
@@ -411,7 +411,11 @@ public partial class Annotations : SampleView
         toast.Opacity = 1;
         toastText.Text = text;
         toast.InputTransparent = true;
+#if NET10_0_OR_GREATER
+        await toast.FadeToAsync(0, 2000, Easing.SinIn);
+#else
         await toast.FadeTo(0, 2000, Easing.SinIn);
+#endif
     }
 
     private void UndoCommand_CanExecuteChanged(object? sender, EventArgs e)
@@ -628,12 +632,11 @@ public partial class Annotations : SampleView
     {
 #if ANDROID || IOS
         if (lastCell != null)
-            lastCell.View.BackgroundColor = Colors.Transparent;
-        var viewCell = (ViewCell)sender;
-        if (viewCell.View != null)
+            lastCell.BackgroundColor = Colors.Transparent;
+        if (sender is View tappedView)
         {
-            viewCell.View.BackgroundColor = Color.FromArgb("#0A000000");
-            lastCell = viewCell;
+            tappedView.BackgroundColor = Color.FromArgb("#0A000000");
+            lastCell = tappedView;
         }
 #endif
     }

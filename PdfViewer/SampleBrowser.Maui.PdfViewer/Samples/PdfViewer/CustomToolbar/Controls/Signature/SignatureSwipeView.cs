@@ -226,16 +226,20 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
             listView.ScrollBarVisibility = ScrollBarVisibility.Default;
             listView.ItemTemplate = new DataTemplate(() =>
             {
-                ViewCell view = new ViewCell();
+               
                 SignatureListBorder border = new SignatureListBorder();
                 border.LongPressed += ListBorder_LongPressed;
                 border.Tapped += ListBorder_Tapped;
                 ContentView image = new ContentView();
                 image.SetBinding(ContentView.ContentProperty, new Binding("View"));
                 border.Content = image;
+#if NET10_0_OR_GREATER
+            return border;
+#else
+                ViewCell view = new ViewCell();
                 view.View = border;
-
                 return view;
+#endif
             });
             return listView;
         }

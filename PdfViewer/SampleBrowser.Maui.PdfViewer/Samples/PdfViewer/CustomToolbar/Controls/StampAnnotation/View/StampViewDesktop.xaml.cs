@@ -147,11 +147,11 @@ public partial class StampViewDesktop : StampView
         }
     }
 
-    private void Stamp_ItemTapped(object sender, Microsoft.Maui.Controls.ItemTappedEventArgs e)
+    private void Stamp_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
     {
         if (StampHelper != null)
         {
-            if (e.Item is StandardStamps standardStamp && standardStamp.LabelText != null)
+            if (e.DataItem is StandardStamps standardStamp && standardStamp.LabelText != null)
             {
                 stampType = GetStampType(standardStamp.LabelText);
                 StampMode = true;

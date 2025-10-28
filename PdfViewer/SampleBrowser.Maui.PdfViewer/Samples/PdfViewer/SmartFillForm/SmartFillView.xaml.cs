@@ -121,12 +121,16 @@ public partial class SmartFillView : SampleView
                 var mainWindow = Application.Current.Windows.FirstOrDefault();
                 if (mainWindow != null && mainWindow.Page != null)
                 {
+#if NET10_0_OR_GREATER
+                    await mainWindow.Page.DisplayAlertAsync("", "No data found in clipboard. Please copy the necessary information and try again.", "OK");
+#else
                     await mainWindow.Page.DisplayAlert("", "No data found in clipboard. Please copy the necessary information and try again.", "OK");
+#endif
                 }
             }
         }
 #endif
-        loadingIndicator.IsRunning = false; // Stop the loading indicator
+                    loadingIndicator.IsRunning = false; // Stop the loading indicator
         loadingIndicator.IsVisible = false; // Hide the loading indicator
         PdfViewer.Opacity = 1;
         StopBubbleAnimation();

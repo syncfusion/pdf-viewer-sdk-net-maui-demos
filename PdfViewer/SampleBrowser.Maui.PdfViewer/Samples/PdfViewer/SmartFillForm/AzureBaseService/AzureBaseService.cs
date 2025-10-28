@@ -139,11 +139,15 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
             if (page != null && !IsCredentialValid)
             {
                 isAlreadyValidated = true;
+#if NET10_0_OR_GREATER
+                await page.DisplayAlertAsync("Alert", "The Azure API key or endpoint is missing or incorrect. Please verify your credentials. You can also continue with the offline data.", "OK");
+#else
                 await page.DisplayAlert("Alert", "The Azure API key or endpoint is missing or incorrect. Please verify your credentials. You can also continue with the offline data.", "OK");
+#endif
             }
         }
 
-        #endregion
+#endregion
 
         #region Events
 
