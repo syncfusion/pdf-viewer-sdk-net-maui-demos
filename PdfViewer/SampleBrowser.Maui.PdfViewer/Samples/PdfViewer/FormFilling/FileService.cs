@@ -57,7 +57,13 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                             return new PdfFileData(result.FileName, await result.OpenReadAsync());
                         }
                         else
+                        {
+#if NET10_0_OR_GREATER
+                            Application.Current?.Windows[0].Page?.DisplayAlertAsync("Error", $"Pick a file of type {fileExtension}", "OK");
+#else
                             Application.Current?.Windows[0].Page?.DisplayAlert("Error", $"Pick a file of type {fileExtension}", "OK");
+#endif
+                        }
                     }
                 }
                 return null;
@@ -69,7 +75,11 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                     message = ex.Message;
                 else
                     message = "File open failed.";
+#if NET10_0_OR_GREATER
+                Application.Current?.Windows[0].Page?.DisplayAlertAsync("Error", message, "OK");
+#else
                 Application.Current?.Windows[0].Page?.DisplayAlert("Error", message, "OK");
+#endif
             }
             return null;
         }

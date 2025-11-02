@@ -204,20 +204,32 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                 if (fileName != null)
                 {
                     string? filePath = await FileService.SaveAsAsync(fileName, this.memoryStream);
+#if NET10_0_OR_GREATER
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync("File saved", $"The file is saved to {filePath}", "OK");
+#else
                     await Application.Current!.Windows[0].Page!.DisplayAlert("File saved", $"The file is saved to {filePath}", "OK");
+#endif
                     IsEnableSave=false;
 
                 }
             }
             catch (Exception exception)
             {
+#if NET10_0_OR_GREATER
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not saved. {exception.Message}", "OK");
+#else
                 await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not saved. {exception.Message}", "OK");
+#endif
             }
         }
 
         internal async void ShowDialog(string title, string message)
         {
+#if NET10_0_OR_GREATER
+            await Application.Current!.Windows[0].Page!.DisplayAlertAsync(title, message, "OK");
+#else
             await Application.Current!.Windows[0].Page!.DisplayAlert(title, message, "OK");
+#endif
         }
 
 
