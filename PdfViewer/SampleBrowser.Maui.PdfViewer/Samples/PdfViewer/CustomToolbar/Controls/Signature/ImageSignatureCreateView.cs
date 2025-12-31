@@ -21,7 +21,7 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
 {
     internal class ImageSignatureCreateView : SfView, ISignatureCreateView
     {
-        string? imageFilePath;
+        string? imageFilePath = String.Empty;
         Stream? imageStream;
 
         private static readonly BindableProperty SignatureUploadButtonColorProperty = BindableProperty.Create("SignatureUploadButtonColor", typeof(Color), typeof(ImageSignatureCreateView), defaultValue: Color.FromArgb("#6750A4"));
@@ -158,6 +158,44 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
 
         private async void UploadButton_Clicked(object? sender, System.EventArgs e)
         {
+#if (ANDROID || WINDOWS) && NET10_0_OR_GREATER
+            var imageFileResults = await MediaPicker.Default.PickPhotosAsync(new MediaPickerOptions
+            {
+                Title = "Select a photo"
+            });
+            if (imageFileResults != null)
+            {
+                // If you just want the first photo
+                var imageFileResult = imageFileResults.FirstOrDefault();
+                if (imageFileResult != null)
+                {
+                    imageStream = await imageFileResult.OpenReadAsync();
+                    imageFilePath = imageFileResult.FullPath;
+                    if (BindingContext is SignatureViewModel viewModel)
+                    {
+                        viewModel.UploadTabImageSource = new FileImageSource
+                        {
+                            File = imageFilePath
+                        };
+                    }
+                }
+            }
+#elif !ANDROID && !WINDOWS && NET10_0_OR_GREATER
+            var file = await MediaPicker.PickPhotosAsync();
+            if (file.Count > 0 && file[0] is FileResult _file)
+            {  
+                imageStream = await _file.OpenReadAsync();
+                Stream copiedImageStream = new MemoryStream();
+                imageStream.CopyTo(copiedImageStream);
+                copiedImageStream.Position = 0;
+                if (imageStream != null)
+                {
+                    if (BindingContext is SignatureViewModel viewModel)
+                        viewModel.UploadTabImageSource = ImageSource.FromStream(() => copiedImageStream);
+                }
+     
+            }
+#else
             FileResult? imageFileResult = await MediaPicker.Default.PickPhotoAsync();
             if (imageFileResult != null)
             {
@@ -169,6 +207,7 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                         File = imageFilePath,
                     };
             }
+#endif
         }
 
         void ISignatureCreateView.Reset()
@@ -185,6 +224,12 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                 HorizontalOptions = LayoutOptions.Center,
                 Source = new FileImageSource { File = imageFilePath }
             };
+
+        if (!string.IsNullOrEmpty(imageFilePath))
+                image.Source = new FileImageSource { File = imageFilePath };
+        else if (imageStream != null)
+                image.Source = ImageSource.FromStream(() => { return imageStream; });
+
             ImageSignatureItem signatureItem = new ImageSignatureItem(imageStream, imageFilePath, image);
             return signatureItem;
         }

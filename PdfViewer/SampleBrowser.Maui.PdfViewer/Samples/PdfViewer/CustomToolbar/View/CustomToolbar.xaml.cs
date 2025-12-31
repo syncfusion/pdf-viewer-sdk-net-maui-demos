@@ -10,13 +10,13 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Platform;
 using SampleBrowser.Maui.Base;
+using Syncfusion.Maui.Core.Converters;
 using Syncfusion.Maui.Core.Internals;
 using Syncfusion.Maui.PdfViewer;
-using Syncfusion.Pdf.Parsing;
 using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
 using System.IO;
 using System.Reflection;
-using Syncfusion.Maui.Core.Converters;
 
 namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer;
 [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -31,7 +31,11 @@ public partial class CustomToolbar : SampleView
     /// </summary>
     bool undoAlreadyExecuted = false;
 #if ANDROID || IOS
+#if NET10_0_OR_GREATER
+    private View? lastCell;
+#else
     private ViewCell? lastCell;
+#endif
 #endif
     public Stream CustomStampImageStream { get; set; } = new MemoryStream();
     public double CustomStampWidth { get; set; }
@@ -404,7 +408,11 @@ public partial class CustomToolbar : SampleView
     {
         toast.Opacity = 1;
         toastText.Text = text;
+#if NET10_0_OR_GREATER
+        await toast.FadeToAsync(0, 2000, Easing.SinIn);
+#else
         await toast.FadeTo(0, 2000, Easing.SinIn);
+#endif
     }
 
     private void UndoCommand_CanExecuteChanged(object? sender, EventArgs e)
@@ -735,7 +743,16 @@ public partial class CustomToolbar : SampleView
     private void ViewCell_Tapped(object sender, EventArgs e)
     {
 #if ANDROID || IOS
+#if NET10_0_OR_GREATER
         if (lastCell != null)
+            lastCell.BackgroundColor = Colors.Transparent;
+        if (sender is View tappedView)
+        {
+            tappedView.BackgroundColor = Color.FromArgb("#0A000000");
+            lastCell = tappedView;
+        }
+#else
+       if (lastCell != null)
             lastCell.View.BackgroundColor = Colors.Transparent;
         var viewCell = (ViewCell)sender;
         if (viewCell.View != null)
@@ -743,6 +760,7 @@ public partial class CustomToolbar : SampleView
             viewCell.View.BackgroundColor = Color.FromArgb("#0A000000");
             lastCell = viewCell;
         }
+#endif
 #endif
     }
 
