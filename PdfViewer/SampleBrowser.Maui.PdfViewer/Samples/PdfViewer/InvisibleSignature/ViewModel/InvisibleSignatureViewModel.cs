@@ -174,12 +174,20 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                 if (fileName != null)
                 {
                     string? filePath = await FileService.SaveAsAsync(fileName, signatureValidatedStream);
+#if NET10_0_OR_GREATER
+                    await Application.Current!.Windows[0].Page!.DisplayAlertAsync("File saved", $"The file is saved to {filePath}", "OK");
+#else
                     await Application.Current!.Windows[0].Page!.DisplayAlert("File saved", $"The file is saved to {filePath}", "OK");
+#endif
                 }
             }
             catch (Exception exception)
             {
+#if NET10_0_OR_GREATER
+                await Application.Current!.Windows[0].Page!.DisplayAlertAsync("Error", $"The file is not saved. {exception.Message}", "OK");
+#else
                 await Application.Current!.Windows[0].Page!.DisplayAlert("Error", $"The file is not saved. {exception.Message}", "OK");
+#endif
             }
         }
 
@@ -203,7 +211,7 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
                                 byte[] data = new byte[pfxFile!.Length];
                                 pfxFile?.Read(data, 0, data.Length);
                                 X509Certificate2Collection collection = new X509Certificate2Collection();
-#if NET9_0
+#if NET9_0_OR_GREATER
                                 X509Certificate2 certificate = X509CertificateLoader.LoadPkcs12(data, "password123");
 #else
                                 X509Certificate2 certificate = new X509Certificate2(data, "password123");

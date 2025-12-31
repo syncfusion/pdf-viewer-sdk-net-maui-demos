@@ -103,12 +103,16 @@ namespace SampleBrowser.Maui.PdfViewer.SfPdfViewer
             ListView.ScrollBarVisibility = ScrollBarVisibility.Default;
             ListView.ItemTemplate = new DataTemplate(() =>
             {
-                ViewCell view = new ViewCell();
+                
                 SignatureListItemView grid = new SignatureListItemView();
                 grid.DeleteClicked += Grid_DeleteClicked;
+#if NET10_0_OR_GREATER
+            return grid;
+#else
+                ViewCell view = new ViewCell();
                 view.View = grid;
-
                 return view;
+#endif
             });
             Grid.SetRow(ListView, 0);
             mainGrid?.Children?.Add(ListView);

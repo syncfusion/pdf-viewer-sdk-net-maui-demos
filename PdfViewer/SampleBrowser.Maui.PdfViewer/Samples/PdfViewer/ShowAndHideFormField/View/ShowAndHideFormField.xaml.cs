@@ -7,6 +7,7 @@
 #endregion
 using SampleBrowser.Maui.Base;
 using SampleBrowser.Maui.PdfViewer.Samples.PdfViewer.ShowAndHideFormField.View;
+using Syncfusion.Maui.ListView;
 using Syncfusion.Maui.PdfViewer;
 using System.Collections.ObjectModel;
 
@@ -35,7 +36,7 @@ public partial class ShowAndHideFormField : SampleView
         selectedItem = ListItems[0];
         myListView.ItemsSource = ListItems;
         myListView.SelectedItem = ListItems[0];
-        myListView.ItemSelected += MyListView_ItemSelected;
+        myListView.SelectionChanged += MyListView_ItemSelected;
 #if WINDOWS || MACCATALYST
         this.SizeChanged += InvisibleSignature_SizeChanged;
 #endif
@@ -44,9 +45,9 @@ public partial class ShowAndHideFormField : SampleView
         originalBorderColor = Color.FromRgba(1, 1, 1, 1);
     }
 
-    private void MyListView_ItemSelected(object? sender, SelectedItemChangedEventArgs e)
+    private void MyListView_ItemSelected(object? sender, ItemSelectionChangedEventArgs e)
     {
-        if (e.SelectedItem is ListItem selectedItem)
+        if ((e.AddedItems != null && e.AddedItems.Count > 0 && e.AddedItems[0] is ListItem selectedItem))
         {
             ToggleFormFieldsVisibility(selectedItem.Name);
         }
