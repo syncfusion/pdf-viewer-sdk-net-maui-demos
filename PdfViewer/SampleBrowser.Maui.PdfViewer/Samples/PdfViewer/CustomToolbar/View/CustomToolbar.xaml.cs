@@ -10,6 +10,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Platform;
 using SampleBrowser.Maui.Base;
+using Syncfusion.Maui.Core.Converters;
 using Syncfusion.Maui.Core.Internals;
 using Syncfusion.Maui.PdfViewer;
 using Syncfusion.Pdf;
