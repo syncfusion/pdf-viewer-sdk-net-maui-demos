@@ -1,4 +1,4 @@
-# Syncfusion® .NET MAUI PDF Viewer examples    
+﻿# Syncfusion® .NET MAUI PDF Viewer examples    
  
 This repository contains comprehensive demos of [Syncfusion .NET MAUI PDF Viewer](https://www.syncfusion.com/maui-controls/maui-pdf-viewer?utm_source=github&utm_medium=listing). This is the best place to check our .NET MAUI PDF Viewer control to get more insight about the usage of APIs. 
 
@@ -65,4 +65,4 @@ The examples use the Syncfusion .NET MAUI PDF Viewer, which require a valid lice
 
 * To renew the subscription, click [here](https://www.syncfusion.com/sales/products?utm_source=github&utm_medium=listing) or contact our sales team at <salessupport@syncfusion.com>.
   
-<p>Copyright © 2001-2025 Syncfusion®, Inc. Updated on 2025-08-07 at precisely 19:11:47 EST.</p> 
+<p>Copyright © 2001-2026 Syncfusion®, Inc. Updated on 2026-02-05 at precisely 11:56:39 EST.</p> 
