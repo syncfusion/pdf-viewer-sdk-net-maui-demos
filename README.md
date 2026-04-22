@@ -65,4 +65,4 @@ The examples use the Syncfusion .NET MAUI PDF Viewer, which require a valid lice
 
 * To renew the subscription, click [here](https://www.syncfusion.com/sales/products?utm_source=github&utm_medium=listing) or contact our sales team at <salessupport@syncfusion.com>.
   
-<p>Copyright © 2001-2026 Syncfusion®, Inc. Updated on 2026-03-17 at precisely 09:05:38 EST.</p> 
+<p>Copyright © 2001-2026 Syncfusion®, Inc. Updated on 2026-04-22 at precisely 06:08:54 EST.</p> 
