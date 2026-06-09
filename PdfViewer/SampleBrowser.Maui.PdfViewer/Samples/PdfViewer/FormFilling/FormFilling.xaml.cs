@@ -125,6 +125,22 @@ public partial class FormFilling : SampleView
             selectedAnnotation = null;
         ToggleDeleteOptionVisibility(false);
     }
+
+    private void ChangeFormFieldEditingState_Clicked(object? sender, EventArgs? e)
+    {
+        pdfViewer.AllowEditFormFields = !pdfViewer.AllowEditFormFields;
+        if (pdfViewer.AllowEditFormFields)
+        {
+            LockAndUnlockButton.Text = "\ue77C";
+            ToolTipProperties.SetText(LockAndUnlockButton, "Disable form field editing");
+        }
+        else
+        {
+            LockAndUnlockButton.Text = "\ue77B";
+            ToolTipProperties.SetText(LockAndUnlockButton, "Enable form field editing");
+        }   
+    }
+
     ///// <summary>
     ///// Handles when leaving the current page
     ///// </summary>
