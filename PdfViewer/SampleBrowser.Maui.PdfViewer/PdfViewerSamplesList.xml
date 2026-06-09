@@ -13,6 +13,7 @@
       <Sample Title="Invisible Signatures" SampleName="InvisibleSignature" Description="This sample demonstrates how to digitally sign a PDF document from code behind using Syncfusion's PDF Viewer and PDF Library." CodeViewerPath="PdfViewer/InvisibleSignature/View" />
 			<Sample Title="Form Field Customization" SampleName="ShowAndHideFormField" Description="The sample demonstrates how two different users can sequentially fill out their designated fields. Fields are color-coded (red for tenant, green for landlord), with tenant information required before landlord fields become visible and save functionality enabled only after both users complete their required information." CodeViewerPath="PdfViewer/ShowAndHideFormField/View"/>
 			<Sample Title="Smart Form Filling" SampleName="SmartFillView" SearchTags="pdf, pdf viewer, smart fill, form, form filling" CodeViewerPath="PdfViewer/SmartFillForm/" Description="This sample illustrates how the Syncfusion .NET MAUI PDF Viewer, with the help of AI, can automatically fill form fields using the content copied by the user." />
+			<Sample Title="Disable Double Tap Zoom" StatusTag="New" SampleName="DisableDoubleTapZoom" SearchTags="pdf, pdf viewer, DoubleTap, Zoom, Disable Double Tap Zoom" CodeViewerPath="PdfViewer/DisableDoubleTap/" Description="This sample demonstrates how to disable the double-tap zoom gesture in the Syncfusion .NET MAUI PDF Viewer." />
 		</Control>
 	</ControlCategory>
 </SyncfusionControls>
