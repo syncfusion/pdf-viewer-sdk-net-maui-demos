@@ -296,6 +296,10 @@
       <Link>Samples\PdfViewer\InvisibleSignature\View\InvisibleSignature.xaml.cs</Link>
       <DependentUpon>InvisibleSignature.xaml</DependentUpon>
     </Compile>
+	<Compile Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\DisableDoubleTap\View\DisableDoubleTap.xaml.cs">
+		<Link>Samples\PdfViewer\DisableDoubleTap\View\DisableDoubleTap.xaml.cs</Link>
+		<DependentUpon>DisableDoubleTap.xaml</DependentUpon>
+	</Compile>
     <Compile Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\Read-Only\View\ReadOnly.xaml.cs">
       <Link>Samples\PdfViewer\Read-Only\View\ReadOnly.xaml.cs</Link>
       <DependentUpon>ReadOnly.xaml</DependentUpon>
@@ -312,6 +316,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\InvisibleSignature\ViewModel\InvisibleSignatureViewModel.cs">
       <Link>Samples\PdfViewer\InvisibleSignature\ViewModel\InvisibleSignatureViewModel.cs</Link>
     </Compile>
+	<Compile Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\DisableDoubleTap\ViewModel\DisableDoubleTapViewModel.cs">
+		<Link>Samples\PdfViewer\DisableDoubleTap\ViewModel\DisableDoubleTapViewModel.cs</Link>
+	</Compile>
 		<Compile Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\FormFilling\FileService.cs">
 		  <Link>Samples\PdfViewer\FormFilling\FileService.cs</Link>
 		</Compile>
@@ -420,6 +427,9 @@
     <MauiXaml Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\InvisibleSignature\View\InvisibleSignature.xaml">
       <Link>Samples\PdfViewer\InvisibleSignature\View\InvisibleSignature.xaml</Link>
     </MauiXaml>
+	<MauiXaml Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\DisableDoubleTap\View\DisableDoubleTap.xaml">
+		<Link>Samples\PdfViewer\DisableDoubleTap\View\DisableDoubleTap.xaml</Link>
+	</MauiXaml>
     <MauiXaml Include="$(MSBuildThisFileDirectory)\Samples\PdfViewer\Read-Only\View\ReadOnly.xaml">
       <Link>Samples\PdfViewer\Read-Only\View\ReadOnly.xaml</Link>
     </MauiXaml>

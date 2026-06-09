@@ -53,17 +53,21 @@
         <Grid>
             <Grid RowDefinitions="50,*">
                 <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding Light={StaticResource SampleBrowserBackgroundLight}, Dark={StaticResource BackgroundDark},Default=#F3EDF7}">
-                    <HorizontalStackLayout Spacing="16" Margin="20,0,0,0" HorizontalOptions="Start">
-                        <Button x:Name="openButton" x:DataType="local:FormFillingViewModel" ToolTipProperties.Text="Open PDF" Style="{x:StaticResource buttonIconStyle}" Text="&#xe712;" Command="{Binding OpenCommand}" />
-                        <Button x:Name="saveAsButton" ToolTipProperties.Text="Save as" Style="{x:StaticResource buttonIconStyle}" Text="&#xe75f;" Clicked="saveAsButton_Clicked" />
-                        <Button x:Name="printButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Print the form" Style="{x:StaticResource buttonIconStyle}" Text="&#xe77f;" Command="{Binding Source={x:Reference pdfViewer},Path=PrintDocumentCommand}" />
-                        <Rectangle Fill="#CAC4D0" Margin="-4,0,-4,0" HeightRequest="24" WidthRequest="2" />
-                        <Button x:Name="exportButton" ToolTipProperties.Text="Export form data to an XFDF file" Style="{x:StaticResource buttonIconStyle}" Text="&#xe781;" Clicked="exportButton_Clicked" />
-                        <Button x:Name="importButton" ToolTipProperties.Text="Import form data from an XFDF file" Style="{x:StaticResource buttonIconStyle}" Text="&#xe782;" Clicked="importButton_Clicked" />
-                        <Rectangle Fill="#CAC4D0" Margin="-4,0,-4,0" HeightRequest="24" WidthRequest="2" />
-                        <Button x:Name="undoButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Undo" Style="{x:StaticResource buttonIconStyle}" Text="&#xe744;" Command="{Binding Path=UndoCommand,Source={x:Reference pdfViewer}}" />
-                        <Button x:Name="redoButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Redo" Style="{x:StaticResource buttonIconStyle}" Text="&#xe745;" Command="{Binding Path=RedoCommand,Source={x:Reference pdfViewer}}" />
-                    </HorizontalStackLayout>
+                    <ScrollView Orientation="Both" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                        <HorizontalStackLayout Spacing="16" Margin="20,0,0,0" HorizontalOptions="Start">
+                            <Button x:Name="openButton" x:DataType="local:FormFillingViewModel" ToolTipProperties.Text="Open PDF" Style="{x:StaticResource buttonIconStyle}" Text="&#xe712;" Command="{Binding OpenCommand}" />
+                            <Button x:Name="saveAsButton" ToolTipProperties.Text="Save as" Style="{x:StaticResource buttonIconStyle}" Text="&#xe75f;" Clicked="saveAsButton_Clicked" />
+                            <Button x:Name="printButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Print the form" Style="{x:StaticResource buttonIconStyle}" Text="&#xe77f;" Command="{Binding Source={x:Reference pdfViewer},Path=PrintDocumentCommand}" />
+                            <Rectangle Fill="#CAC4D0" Margin="-4,0,-4,0" HeightRequest="24" WidthRequest="2" />
+                            <Button x:Name="exportButton" ToolTipProperties.Text="Export form data to an XFDF file" Style="{x:StaticResource buttonIconStyle}" Text="&#xe781;" Clicked="exportButton_Clicked" />
+                            <Button x:Name="importButton" ToolTipProperties.Text="Import form data from an XFDF file" Style="{x:StaticResource buttonIconStyle}" Text="&#xe782;" Clicked="importButton_Clicked" />
+                            <Rectangle Fill="#CAC4D0" Margin="-4,0,-4,0" HeightRequest="24" WidthRequest="2" />
+                            <Button x:Name="undoButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Undo" Style="{x:StaticResource buttonIconStyle}" Text="&#xe744;" Command="{Binding Path=UndoCommand,Source={x:Reference pdfViewer}}" />
+                            <Button x:Name="redoButton" x:DataType="syncfusion:SfPdfViewer" ToolTipProperties.Text="Redo" Style="{x:StaticResource buttonIconStyle}" Text="&#xe745;" Command="{Binding Path=RedoCommand,Source={x:Reference pdfViewer}}" />
+                            <Rectangle Fill="#CAC4D0" Margin="-4,0,-4,0" HeightRequest="24" WidthRequest="2" />
+                            <Button x:Name="LockAndUnlockButton" ToolTipProperties.Text="Disable form field editing" Style="{x:StaticResource buttonIconStyle}" Text="&#xe77C;" Clicked="ChangeFormFieldEditingState_Clicked" />
+                        </HorizontalStackLayout>
+                    </ScrollView>
                     <Button HorizontalOptions="End" x:Name="deleteButton" IsVisible="False" Margin="0,0,10,0" ToolTipProperties.Text="Delete signature" Style="{x:StaticResource buttonIconStyle}" Text="&#xe70f;" Clicked="deleteButton_Clicked" />
                 </Grid>
                 <Grid Grid.Row="1">
